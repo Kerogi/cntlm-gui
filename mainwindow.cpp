@@ -8,7 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    connect(ui->tunneling_checkbox,SIGNAL(toggled(bool)),
+            ui->tunnelhostname_input,SLOT(setEnabled(bool)));
+    connect(ui->actionExit,SIGNAL(triggered()),
+            ui->actionExit,SLOT(trigger()));
 
 }
 
@@ -37,20 +40,15 @@ void MainWindow::on_submit_start_cntlm_clicked()
 
 void MainWindow::on_submit_generate_hash_clicked()
 {
-    QProcess::execute("");
+    QString username;
+    username = ui->username_input->text();
+    //password = ui->password_input->text();
+    //domain = ui->domain_input->text();
+    QProcess::execute("cntlm -u username@domain -p password -I -M http://www.google.com");
 }
+
 
 void MainWindow::on_tunneling_checkbox_toggled(bool checked)
 {
-    if (MainWindow::on_tunneling_checkbox_toggled = (1))
-    {
- ui->tunnelhostname_input->setEnabled(1);
- ui->tunnellocalport_input->setEnabled(1);
-    }
-        else
-        {
-        ui->tunnelhostname_input->setEnabled(0);
-        ui->tunnellocalport_input->setEnabled(0);
-        }
-}
 
+}

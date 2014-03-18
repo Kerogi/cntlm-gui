@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,16 +20,19 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>CNTLM-GUI</string>
+   <string notr="true">CNTLM-GUI</string>
+  </property>
+  <property name="animated">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>10</y>
+      <y>20</y>
       <width>291</width>
-      <height>391</height>
+      <height>381</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -69,6 +75,9 @@
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="password_input">
+       <property name="text">
+        <string/>
+       </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
@@ -82,7 +91,7 @@
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="QLineEdit" name="server_input"/>
+      <widget class="QLineEdit" name="proxy_input"/>
      </item>
      <item row="5" column="0" colspan="2">
       <widget class="QCheckBox" name="listenalladdress_checkbox">
@@ -127,7 +136,7 @@
      <item row="8" column="1">
       <widget class="QLineEdit" name="tunnelhostname_input">
        <property name="enabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -165,21 +174,49 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>10</y>
-      <width>211</width>
-      <height>141</height>
+      <y>20</y>
+      <width>213</width>
+      <height>174</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_2">
-     <item row="0" column="0">
-      <widget class="QPushButton" name="submit_generate_hash">
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>Generate HASH</string>
+        <string/>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="NTLMv2_hash_generated">
+     <item row="2" column="0">
+      <widget class="QRadioButton" name="nt_radio">
+       <property name="text">
+        <string>PassNT</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QRadioButton" name="lm_radio">
+       <property name="text">
+        <string>PassLM</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QRadioButton" name="ntlmv2_radio">
+       <property name="text">
+        <string>PassNTLMv2</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="submit_generate_hash">
+       <property name="text">
+        <string>GenHash</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="hash_generated_output">
        <property name="text">
         <string/>
        </property>
@@ -266,7 +303,43 @@
      <height>23</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionLoad"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>?</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuAbout"/>
   </widget>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionLoad">
+   <property name="text">
+    <string>Load</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
