@@ -23,6 +23,8 @@ private slots:
     void on_submit_start_cntlm_clicked();
     void on_submit_generate_hash_clicked();
 
+    void on_tunneling_checkbox_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
 };

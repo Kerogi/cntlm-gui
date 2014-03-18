@@ -39,3 +39,18 @@ void MainWindow::on_submit_generate_hash_clicked()
 {
     QProcess::execute("");
 }
+
+void MainWindow::on_tunneling_checkbox_toggled(bool checked)
+{
+    if (MainWindow::on_tunneling_checkbox_toggled = (1))
+    {
+ ui->tunnelhostname_input->setEnabled(1);
+ ui->tunnellocalport_input->setEnabled(1);
+    }
+        else
+        {
+        ui->tunnelhostname_input->setEnabled(0);
+        ui->tunnellocalport_input->setEnabled(0);
+        }
+}
+
